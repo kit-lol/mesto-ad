@@ -16,12 +16,12 @@ function hideInputError(formElement, inputElement, settings) {
   }
 }
 
-function disableSubmitButton(buttonElement, settings) {
+export function disableSubmitButton(buttonElement, settings) {
   buttonElement.classList.add(settings.inactiveButtonClass);
   buttonElement.disabled = true;
 }
 
-function enableSubmitButton(buttonElement, settings) {
+export function enableSubmitButton(buttonElement, settings) {
   buttonElement.classList.remove(settings.inactiveButtonClass);
   buttonElement.disabled = false;
 }
@@ -77,11 +77,7 @@ export function clearValidation(formElement, settings) {
     hideInputError(formElement, inputElement, settings);
   });
 
-  if (inputList.length > 0) {
-    toggleButtonState(inputList, buttonElement, settings);
-  } else {
-    enableSubmitButton(buttonElement, settings);
-  }
+  disableSubmitButton(buttonElement, settings);
 }
 
 export function enableValidation(settings) {
